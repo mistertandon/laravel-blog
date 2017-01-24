@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 class PagesController extends Controller{
 
     /**
-     * This function is used to display about us page.
+     * This function is usedus to display about us page.
      */
     public function aboutUs_PCM(){
 
         $fullName = 'Parvesh Tandon';
         $githubUserName = 'mistertandon';
 
-        return view('pages.about')->withName($fullName)->withGithub($githubUserName);
+        return view('pages.about_us')->withName($fullName)->withGithub($githubUserName);
     }
 
     /**
@@ -22,7 +22,7 @@ class PagesController extends Controller{
 
         $emailId = 'enggparveshtandon@gmail.com';
 
-        return view('pages.contact')->with('contactEmailId', $emailId);
+        return view('pages.contact_us')->with('contactEmailId', $emailId);
     }
     
     /**
