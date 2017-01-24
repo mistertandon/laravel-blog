@@ -74,8 +74,8 @@
             @endif
 
             <div class="content">
-                <div>
-                    Contact me using {{$contactEmailId}}
+                <div class="title m-b-md">
+                    Opening Job position is {{$data['jobPosition']}}
                 </div>
 
                 <div class="links">

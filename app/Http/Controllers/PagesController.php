@@ -9,7 +9,10 @@ class PagesController extends Controller{
      */
     public function aboutUs_PCM(){
 
-        return view('pages.about');
+        $fullName = 'Parvesh Tandon';
+        $githubUserName = 'mistertandon';
+
+        return view('pages.about')->withName($fullName)->withGithub($githubUserName);
     }
 
     /**
@@ -17,7 +20,21 @@ class PagesController extends Controller{
      */
     public function contactUs_PCM(){
 
-        return view('pages.contact');
+        $emailId = 'enggparveshtandon@gmail.com';
+
+        return view('pages.contact')->with('contactEmailId', $emailId);
+    }
+    
+    /**
+     * This function is used to display career page.
+     */
+    public function career_PCM(){
+
+        $data = Array();
+
+        $data['jobPosition'] = 'Node Js';
+
+        return view('pages.career')->withData($data);
     }
     
     /**

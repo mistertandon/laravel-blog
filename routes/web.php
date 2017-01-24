@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('about', 'PagesController@aboutUs_PCM');
 
 Route::get('contact', 'PagesController@contactUs_PCM');
+
+Route::get('career', 'PagesController@career_PCM');

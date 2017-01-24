@@ -75,7 +75,8 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    This tutorial series is all about learning basic concepts about Laravel 5.3
+                    My Name is {{$name}}
+                    My Github User-name is {{$github}}
                 </div>
 
                 <div class="links">
