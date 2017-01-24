@@ -12,11 +12,11 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.welcome');
 });
 
-Route::get('about', 'PagesController@aboutUs_PCM');
+Route::get('aboutus', 'PagesController@aboutUs_PCM');
 
-Route::get('contact', 'PagesController@contactUs_PCM');
+Route::get('contactus', 'PagesController@contactUs_PCM');
 
 Route::get('career', 'PagesController@career_PCM');
