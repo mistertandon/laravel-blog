@@ -14,6 +14,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
+
         $posts = Post::all();
 
         return view('posts.index')->withPosts($posts);
@@ -25,6 +26,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function create() {
+
         return view('posts.create');
     }
 
@@ -35,6 +37,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
         $this->validate($request, array(
             'title' => 'required|max:255',
             'body' => 'required|max:255',
@@ -63,6 +66,7 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
+
         $post = Post::find($id);
 
         return view('posts.show')->withPost($post);
@@ -91,7 +95,22 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+       
+        $this->validate($request, array(
+            'title' => 'required|max:255',
+            'body' => 'required:max:255'
+        ));
+        
+        $post = Post::find($id);
+        
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        
+        $post->save();
+        
+        Session::flash('success', 'Post saved successfully.');
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**

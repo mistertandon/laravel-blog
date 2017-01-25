@@ -3,7 +3,9 @@
 @section('container')
 
 <div class="row">
-    {!! Form::model($post, ['route' => ['posts.update', $post->id]]) !!}
+
+    {!! Form::model($post, array("route" => array("posts.update", $post->id), "method" => "PUT")) !!}
+
     <div class="col-md-8">
 
         <div class="form-group">
@@ -37,12 +39,14 @@
                 {!! Html::linkRoute('posts.show', 'Cancel', array($post->id), array('class'=>'btn btn-danger btn-block')) !!}
             </div>
             <div class="col-sm-6">
-                {!! Html::linkRoute('posts.update', 'Save changes', array($post->id), array('class'=>'btn btn-success btn-block')) !!}
+                {{ Form::submit('Save changes', array('class'=>'btn btn-success btn-block'))}}
             </div>
         </div>
 
     </div>
+
     {!! Form::close() !!}
+
 </div>
 
 @endsection
