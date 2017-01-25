@@ -11,11 +11,11 @@
   |
  */
 
-Route::get('/', function () {
-    return view('landing.welcome');
-});
-
-Route::get('aboutus', 'PagesController@aboutUs_PCM');
-Route::get('contactus', 'PagesController@contactUs_PCM');
-Route::get('career', 'PagesController@career_PCM');
+//Route::get('/', function () {
+//    return view('landing.welcome');
+//});
+Route::get('/', 'PageController@index_PCM');
+Route::get('aboutus', 'PageController@aboutUs_PCM');
+Route::get('contactus', 'PageController@contactUs_PCM');
+Route::get('career', 'PageController@career_PCM');
 Route::resource('posts', 'PostController');
