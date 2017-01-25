@@ -44,14 +44,16 @@
                     </td>
                     <td>{{ date('d M Y h:i:s', strtotime($post->created_at)) }}</td>
                     <td>
-                        {!! Html::linkRoute('posts.show', 'View', array($post->id), array('class'=>'btn btn-primary btn-sm')) !!}
-                        {!! Html::linkRoute('posts.edit', 'Edit', array($post->id), array('class'=>'btn btn-info btn-sm')) !!}
+                        {!! Html::linkRoute('posts.show', 'View', array($post->id), array('class'=>'btn btn-success btn-sm')) !!}
+                        {!! Html::linkRoute('posts.edit', 'Edit', array($post->id), array('class'=>'btn btn-warning btn-sm')) !!}
                     </td>
                 </tr>
                 @endforeach
             </tbody>
-
         </table>
+        <div class="text-center">
+            {!! $posts->links() !!}
+        </div>
     </div>
 </div>
 
