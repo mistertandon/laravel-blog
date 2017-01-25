@@ -1,4 +1,4 @@
-@extends('layouts.static_pages')
+@extends('layouts.posts')
 
 @section('title', '| Create Post')
 
