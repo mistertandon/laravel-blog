@@ -6,17 +6,16 @@ use Illuminate\Http\Request;
 use App\Post;
 use Session;
 
-class PostController extends Controller
-{
+class PostController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $posts = Post::all();
-        
+
         return view('posts.index')->withPosts($posts);
     }
 
@@ -25,9 +24,8 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-       return view('posts.create');
+    public function create() {
+        return view('posts.create');
     }
 
     /**
@@ -36,24 +34,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body' => 'required|max:255', 
+            'body' => 'required|max:255',
         ));
-        
+
         $post = new Post;
 
         $post->title = $request->title;
         $post->body = $request->body;
-        
+
         /**
          * Submitted <post> data is going to save into database's posts table
          * using below syntax.
          */
         $post->save();
-        
+
         Session::flash('success', 'Post saved successfully.');
 
         return redirect()->route('posts.show', $post->id);
@@ -65,8 +62,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $post = Post::find($id);
 
         return view('posts.show')->withPost($post);
@@ -78,9 +74,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+
+        $post = array();
+
+        $post = Post::find($id);
+
+        return view('posts.edit')->withPost($post);
     }
 
     /**
@@ -90,8 +90,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -101,8 +100,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }

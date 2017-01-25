@@ -1,10 +1,4 @@
-@extends('layouts.static_pages')
-
-@section('stylesheets')
-
-{{ Html::style('/css/posts.style.css') }}
-
-@endsection
+@extends('layouts.posts')
 
 @section('title', '| All Posts')
 
@@ -16,7 +10,7 @@
         <h2>All Posts</h2>
     </div>
     <div class="col-md-2">
-        <a href="{{route('posts.create')}}" class="btn btn-primary btn-block addPostHeading">Add Post</a>
+        <a href="{{route('posts.create')}}" class="btn btn-primary btn-block add-post-heading">Add Post</a>
     </div>
     <div class="col-md-12">
         <hr>
