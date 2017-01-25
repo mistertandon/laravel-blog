@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Session;
 
 class PostController extends Controller
 {
@@ -13,7 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        
+        return view('posts.index')->withPosts($posts);
     }
 
     /**
@@ -23,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+       return view('posts.create');
     }
 
     /**
@@ -34,7 +38,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'title' => 'required|max:255',
+            'body' => 'required|max:255', 
+        ));
+        
+        $post = new Post;
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        
+        /**
+         * Submitted <post> data is going to save into database's posts table
+         * using below syntax.
+         */
+        $post->save();
+        
+        Session::flash('success', 'Post saved successfully.');
+
+        return redirect()->route('posts.show', $post->id);
     }
 
     /**
@@ -45,7 +67,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('posts.show')->withPost($post);
     }
 
     /**

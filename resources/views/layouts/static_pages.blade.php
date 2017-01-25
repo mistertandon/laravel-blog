@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('layouts.partials._static_pages_head')
+        @include('layouts.global_partials._css')
+        @include('layouts.static_partials._static_pages_head')
     </head>
     <body>
 
-        @include('layouts.partials._static_pages_navbar')
+        @include('layouts.static_partials._static_pages_navbar')
         <!-- "container" div starts here -->
 
         <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    @include('layouts.static_partials._static_pages_flash_message')
+                </div>
+            </div>            
 
             @yield('container')
 
@@ -16,9 +22,9 @@
         <!-- "container" div ends -->
 
         <div>
-            @include('layouts.partials._static_pages_footer')    
+            @include('layouts.static_partials._static_pages_footer')    
         </div>
-        @include('layouts.partials._javascript')
+        @include('layouts.global_partials._javascript')
 
     </body>
 </html>
