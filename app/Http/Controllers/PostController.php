@@ -120,7 +120,15 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        
+        $post = Post::find($id);
+        
+        $postTitle = null;
+        $postTitle = $post->title;
+
+        Session::flash('success', "Post with title \"$postTitle\" has been deleted.");
+        
+        return redirect()->route('posts.index');
     }
 
 }
