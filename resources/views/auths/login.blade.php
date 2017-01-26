@@ -20,7 +20,7 @@
                 {{ Form::label('password', 'Password :', array('class' => 'html-element-top-margin')) }}
                 {{ Form::password('password', array('class' => 'form-control'))}}
 
-                {{Form::submit('Register', array('class' => 'btn btn-primary btn-block html-element-top-margin'))}}
+                {{Form::submit('Login', array('class' => 'btn btn-primary btn-block html-element-top-margin'))}}
 
                 {!! Form::close() !!}
             </div>            
