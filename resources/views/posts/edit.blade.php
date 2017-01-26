@@ -13,7 +13,10 @@
             {{ Form::label('title', ' Title :') }}
             {{ Form::text('title', null, array('class' => 'form-control')) }}
 
-            {{ Form::label('body', ' Body :', ['class' => 'html-element-top-margin']) }}
+            {{ Form::label('slug', 'Slug :', array('class' => 'html-element-top-margin'))}}
+            {{ Form::text('slug', null, array('class'=>'form-control'))}}
+            
+            {{ Form::label('body', ' Body :', array('class' => 'html-element-top-margin')) }}
             {{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
         </div>
@@ -31,7 +34,7 @@
             <dl class="dl-horizontal">
                 <dt>Modified at</dt>
                 <dd>{{date('d M, Y h:i:s',strtotime($post->updated_at))}}</dd>
-            </dl>        
+            </dl>
         </div>
 
         <div class="row">
