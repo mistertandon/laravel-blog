@@ -31,7 +31,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    @include('layouts.auths_partials._logout_btn')
+                    @include('layouts.auths_partials._validate_login')
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>

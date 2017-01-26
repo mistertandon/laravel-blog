@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/posts';
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,16 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    
+    /**
+     * This function is used to display custom user registration form.
+     * 
+     */
+    public function showUserRegistrationForm()
+    {
+        return view('auths.register');
+    }
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -50,7 +59,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:6|confirmed|same:password_confirmation',
         ]);
     }
 

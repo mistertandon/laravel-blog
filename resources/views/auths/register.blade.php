@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="form-group">
-            {!! Form::open(array('route' => 'auth.saveRegister')) !!}
+            {!! Form::open(array('route' => 'auth.makeRegister')) !!}
             
             {{ Form::label('name', 'Username :', array('class' => 'html-element-top-margin'))}}
             {{ Form::text('name', null, array('class' => 'form-control')) }}
