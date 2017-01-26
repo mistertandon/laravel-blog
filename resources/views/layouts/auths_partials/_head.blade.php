@@ -6,6 +6,6 @@
 <title>Laravel Blog @yield('title') </title>
 
 {{ Html::style('/css/global.style.css') }}
-{{ Html::style('/css/posts.style.css') }}
+{{ Html::style('/css/auth.style.css') }}
 
 @yield('stylesheets')
