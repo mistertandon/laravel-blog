@@ -11,7 +11,7 @@
             <p>{{$post->body}}</p>
             <div class="row">
                 <div class="col-sm-2">
-                    {!! Html::linkRoute('blog.welcome', 'All Posts', array(), array('class' => 'btn btn-primary btn-block btn-sm')) !!}
+                    {!! Html::linkRoute('blog.index', 'All Posts', array(), array('class' => 'btn btn-primary btn-block btn-sm')) !!}
                 </div>
             </div>
         </div>

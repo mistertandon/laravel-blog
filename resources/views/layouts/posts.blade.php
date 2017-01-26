@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                    @include('layouts.posts_partials._flash_message')
+                    @include('layouts.global_partials._flash_message')
                 </div>
             </div>            
 
@@ -22,7 +22,7 @@
         <!-- "container" div ends -->
 
         <div>
-            @include('layouts.posts_partials._footer')    
+            @include('layouts.global_partials._footer')    
         </div>
         @include('layouts.global_partials._javascript')
 

@@ -18,6 +18,9 @@
                 <li class="{{ Request::is("/")? "active":"" }}">
                     <a href="/">Home</a>
                 </li>
+                <li class="{{ Request::is('blog')? "active":"" }}">
+                    <a href="/blog">Blog</a>
+                </li>
                 <li class="{{ Request::is("aboutus")? "active":"" }}">
                     <a href="/aboutus">About Us</a>
                 </li>
