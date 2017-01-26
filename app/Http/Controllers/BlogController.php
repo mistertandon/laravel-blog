@@ -19,5 +19,17 @@ class BlogController extends Controller {
 
         return view('blogs.single')->withPost($post);
     }
+    
+    /**
+     * This function is used to get all posts for Blog archieve page.
+     */
+    
+    public function index(){
+        
+        $posts = array();
+        $posts = Post::paginate(3);
+        
+        return view('blogs.index')->withPosts($posts);
+    }
 
 }

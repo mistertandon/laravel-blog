@@ -2,17 +2,17 @@
 <html lang="en">
     <head>
         @include('layouts.global_partials._css')
-        @include('layouts.static_partials._static_pages_head')
+        @include('layouts.static_partials._head')
     </head>
     <body>
 
-        @include('layouts.static_partials._static_pages_navbar')
+        @include('layouts.static_partials._navbar')
         <!-- "container" div starts here -->
 
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    @include('layouts.static_partials._static_pages_flash_message')
+                    @include('layouts.global_partials._flash_message')
                 </div>
             </div>            
 
@@ -22,7 +22,7 @@
         <!-- "container" div ends -->
 
         <div>
-            @include('layouts.static_partials._static_pages_footer')    
+            @include('layouts.global_partials._footer')    
         </div>
         @include('layouts.global_partials._javascript')
 

@@ -18,6 +18,9 @@ Route::get('blog/{slug}', 'BlogController@singlePost_BCM')
         ->name('blog.single')
         ->where(array('slug' => '^([a-z]+(\-)?)+$'));
 
+Route::get('blog', 'BlogController@index')
+        ->name('blog.index');
+
 Route::get('aboutus', 'PageController@aboutUs_PCM');
 Route::get('contactus', 'PageController@contactUs_PCM');
 Route::get('career', 'PageController@career_PCM');
