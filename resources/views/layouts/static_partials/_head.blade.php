@@ -5,4 +5,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <title>Laravel Blog @yield('title') </title>
 
+{{ Html::style('/css/global.style.css') }}
+{{ Html::style('/css/static_pages.style.css') }}
+
 @yield('stylesheets')
