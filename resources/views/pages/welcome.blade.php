@@ -39,7 +39,7 @@
                     @endif
                 </p>
 
-                {!! Html::linkRoute('posts.show', 'Read More', array($post->id), array('class'=>'btn btn-primary dropdown-toggle')) !!}
+                {!! Html::linkRoute('blog.single', 'Read More', array($post->slug), array('class'=>'btn btn-primary dropdown-toggle')) !!}
 
             </div>
             <hr>

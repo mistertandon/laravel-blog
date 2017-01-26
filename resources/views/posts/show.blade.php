@@ -12,18 +12,43 @@
 
     <div class="col-md-4">
         <div class="well">
-            <dl class="dl-horizontal">
-                <dt> Slug: </dt>
-                <dd>{{$post->slug}}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dt> Created At:</dt>
-                <dd>{{date('d, M Y H:i:s', strtotime($post->created_at))}}</dd>
-            </dl>
-            <dl class="dl-horizontal">
-                <dt> Last Modified:</dt>
-                <dd>{{date('d, M Y H:i:s', strtotime($post->updated_at))}}</dd>
-            </dl>
+
+            <div class="row">
+                <div class="col-sm-10">
+                    Slug
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <a href="{{route('blog.single', $post->slug)}}"> Link to Blog</a>
+                </div>
+            </div>
+
+            <div class="row html-element-top-margin">
+                <div class="col-sm-10">
+                    Created At
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10">
+                    {{date('d, M Y H:i:s', strtotime($post->created_at))}}
+                </div>
+            </div>
+
+            <div class="row html-element-top-margin">
+                <div class="col-sm-10">
+                    Last Modified
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10">
+                    {{date('d, M Y H:i:s', strtotime($post->updated_at))}}
+                </div>
+            </div>            
+
         </div>
         <hr>
         <div class="row">
@@ -35,12 +60,12 @@
                 {!! Form::submit('Delete', array('class' => 'btn btn-danger btn-block')) !!}
                 {!! Form::close() !!}
             </div>
-            <div class="row">
-            <div class="col-sm-10 col-sm-offset-1">
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
                 {!! Html::linkRoute('posts.index', 'All Posts', array(), array('class'=>'btn btn-default btn-block html-element-top-margin')) !!}
             </div>
-            </div>
-        </div>
+        </div>        
     </div>
 
 </div>

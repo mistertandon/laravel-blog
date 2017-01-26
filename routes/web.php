@@ -11,10 +11,13 @@
   |
  */
 
-//Route::get('/', function () {
-//    return view('landing.welcome');
-//});
-Route::get('/', 'PageController@index_PCM');
+Route::get('/', 'PageController@index_PCM')
+        ->name('blog.welcome');
+
+Route::get('blog/{slug}', 'BlogController@singlePost_BCM')
+        ->name('blog.single')
+        ->where(array('slug' => '^([a-z]+(\-)?)+$'));
+
 Route::get('aboutus', 'PageController@aboutUs_PCM');
 Route::get('contactus', 'PageController@contactUs_PCM');
 Route::get('career', 'PageController@career_PCM');
