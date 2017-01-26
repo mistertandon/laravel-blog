@@ -41,12 +41,14 @@ class PostController extends Controller {
         $this->validate($request, array(
             'title' => 'required|max:255',
             'body' => 'required|max:255',
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug'
         ));
 
         $post = new Post;
 
-        $post->title = $request->title;
-        $post->body = $request->body;
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->slug = $request->input('slug');
 
         /**
          * Submitted <post> data is going to save into database's posts table
@@ -54,7 +56,7 @@ class PostController extends Controller {
          */
         $post->save();
 
-        Session::flash('success', 'Post saved successfully.');
+        Session::flash('success', "Post with title \"$request->title\" saved successfully.");
 
         return redirect()->route('posts.show', $post->id);
     }
@@ -98,17 +100,19 @@ class PostController extends Controller {
        
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body' => 'required:max:255'
+            'body' => 'required:max:255',
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug'
         ));
         
         $post = Post::find($id);
         
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->slug = $request->input('slug');
         
         $post->save();
         
-        Session::flash('success', 'Post saved successfully.');
+        Session::flash('success', "Post with \"$post->title\" updated successfully.");
 
         return redirect()->route('posts.show', $post->id);
     }

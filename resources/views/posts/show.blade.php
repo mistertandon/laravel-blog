@@ -13,11 +13,15 @@
     <div class="col-md-4">
         <div class="well">
             <dl class="dl-horizontal">
-                <dt> Created At</dt>
+                <dt> Slug: </dt>
+                <dd>{{$post->slug}}</dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt> Created At:</dt>
                 <dd>{{date('d, M Y H:i:s', strtotime($post->created_at))}}</dd>
             </dl>
             <dl class="dl-horizontal">
-                <dt> Last Modified</dt>
+                <dt> Last Modified:</dt>
                 <dd>{{date('d, M Y H:i:s', strtotime($post->updated_at))}}</dd>
             </dl>
         </div>
