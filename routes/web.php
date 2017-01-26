@@ -19,8 +19,8 @@ Route::get('login', 'Auth\LoginController@getLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('auth.validateLogin');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('auth/register', 'Auth\RegisterController@getRegister')->name('auth.register');
-Route::post('auth/register', 'Auth\RegisterController@postRegister')->name('auth.saveRegister');
+Route::get('register', 'Auth\RegisterController@showUserRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register')->name('auth.makeRegister');
 /**
  * Blog routes
  */
