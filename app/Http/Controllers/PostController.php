@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Post;
 use Session;
+use DB;
+use App\Post;
 
 class PostController extends Controller {
-    
-    public function __construct(){
-        
+
+    public function __construct() {
+
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +33,10 @@ class PostController extends Controller {
      */
     public function create() {
 
-        return view('posts.create');
+        $categories = array();
+        $categories = DB::table('categories')->pluck('name', 'id');
+
+        return view('posts.create')->withCategories($categories);
     }
 
     /**
@@ -45,15 +49,17 @@ class PostController extends Controller {
 
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body' => 'required|max:255',
-            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug'
+            'slug' => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
+            'category_id' => 'required|integer',
+            'body' => 'required|max:255'
         ));
 
         $post = new Post;
 
         $post->title = $request->input('title');
-        $post->body = $request->input('body');
         $post->slug = $request->input('slug');
+        $post->category_id = $request->input('category_id');
+        $post->body = $request->input('body');
 
         /**
          * Submitted <post> data is going to save into database's posts table
@@ -88,10 +94,12 @@ class PostController extends Controller {
     public function edit($id) {
 
         $post = array();
-
         $post = Post::find($id);
 
-        return view('posts.edit')->withPost($post);
+        $categories = array();
+        $categories = DB::table('categories')->pluck('name', 'id');
+
+        return view('posts.edit')->with('post', $post)->with('categories', $categories);
     }
 
     /**
@@ -102,21 +110,23 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-       
+
         $this->validate($request, array(
             'title' => 'required|max:255',
-            'body' => 'required:max:255',
-            'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id"
+            'slug' => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
+            'category_id' => 'required|integer',
+            'body' => 'required:max:255'
         ));
-        
+
         $post = Post::find($id);
-        
+
         $post->title = $request->input('title');
-        $post->body = $request->input('body');
         $post->slug = $request->input('slug');
-        
+        $post->category_id = $request->input('category_id');
+        $post->body = $request->input('body');
+
         $post->save();
-        
+
         Session::flash('success', "Post with \"$post->title\" updated successfully.");
 
         return redirect()->route('posts.show', $post->id);
@@ -129,14 +139,14 @@ class PostController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        
+
         $post = Post::find($id);
-        
+
         $postTitle = null;
         $postTitle = $post->title;
 
         Session::flash('success', "Post with title \"$postTitle\" has been deleted.");
-        
+
         return redirect()->route('posts.index');
     }
 
@@ -152,4 +162,5 @@ class PostController extends Controller {
 
         return view('blogs.single')->withPost($post);
     }
+
 }
