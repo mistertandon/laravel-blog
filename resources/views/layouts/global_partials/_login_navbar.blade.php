@@ -36,12 +36,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            {!! Html::linkRoute('posts.index', 'Posts') !!}
-                        </li>
-                        <li>
-                            {!! Html::linkRoute('categories.index', 'Category') !!}
-                        </li>
+                        <li>{!! Html::linkRoute('posts.index', 'Posts') !!}</li>
+                        <li>{!! Html::linkRoute('categories.index', 'Categories') !!}</li>
+                        <li>{!! Html::linkRoute('tags.index', 'Tags') !!}</li>
                     </ul>
                 </li>
             </ul>
