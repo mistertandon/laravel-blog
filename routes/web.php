@@ -54,6 +54,11 @@ Route::get('/', 'PageController@index_PCM')
  */
 Route::resource('posts', 'PostController');
 
+/**
+ * Category routes
+ */
+Route::resource('categories', 'CategoryController', array('except' => array('create')));
+
 
 //Auth::routes();
 
