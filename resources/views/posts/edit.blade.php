@@ -15,7 +15,10 @@
 
             {{ Form::label('slug', 'Slug :', array('class' => 'html-element-top-margin'))}}
             {{ Form::text('slug', null, array('class'=>'form-control'))}}
-            
+
+            {{ Form::label('category_id', 'Select Category :', array('class' => 'html-element-top-margin')) }}
+            {{ Form::select('category_id', $categories, $post->category_id, array('class' => 'form-control')) }}
+
             {{ Form::label('body', ' Body :', array('class' => 'html-element-top-margin')) }}
             {{ Form::textarea('body', null, array('class' => 'form-control')) }}
 
