@@ -140,4 +140,16 @@ class PostController extends Controller {
         return redirect()->route('posts.index');
     }
 
+    /**
+     * This function is used to retrieve blog post corresponding to provided slug url.
+     * 
+     * @param type $slugParam
+     */
+    public function singlePost_PCM($slugParam) {
+
+        $post = array();
+        $post = Post::where('slug', '=', $slugParam)->first();
+
+        return view('blogs.single')->withPost($post);
+    }
 }

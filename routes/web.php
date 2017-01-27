@@ -33,7 +33,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 /**
  * Blog routes
  */
-Route::get('blog/{slug}', 'BlogController@singlePost_BCM')
+Route::get('blog/{slug}', 'PostController@singlePost_PCM')
         ->name('blog.single')
         ->where(array('slug' => '^([a-z]+(\-)?)+$'));
 
