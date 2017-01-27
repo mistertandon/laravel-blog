@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         @include('layouts.global_partials._css')
-        @include('layouts.posts_partials._head')
+        @include('layouts.categories_partials._head')
     </head>
     <body>
 
