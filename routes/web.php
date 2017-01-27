@@ -59,7 +59,17 @@ Route::resource('posts', 'PostController');
  */
 Route::resource('categories', 'CategoryController', array('except' => array('create')));
 
+/**
+ * Tag routes
+ */
+Route::resource('tags', 'TagController');
+/*
+||GET|HEAD|tags|tags.index|App\Http\Controllers\TagController@index|web|
+||POST|tags|tags.store|App\Http\Controllers\TagController@store|web|
+||GET|HEAD|tags/create|tags.create|App\Http\Controllers\TagController@create|web|
+||GET|HEAD|tags/{tag}|tags.show|App\Http\Controllers\TagController@show|web|
+||PUT|PATCH|tags/{tag}|tags.update|App\Http\Controllers\TagController@update|web|
+||DELETE|tags/{tag}|tags.destroy|App\Http\Controllers\TagController@destroy|web|
+||GET|HEAD|tags/{tag}/edit|tags.edit|App\Http\Controllers\TagController@edit|web|
 
-//Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+*/
