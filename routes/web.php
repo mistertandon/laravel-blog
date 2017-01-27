@@ -21,6 +21,15 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('register', 'Auth\RegisterController@showUserRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register')->name('auth.makeRegister');
+
+/**
+ * Password reset Routes
+ */
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.link.request.form');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.link.send.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.show.reset.form');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');
+
 /**
  * Blog routes
  */

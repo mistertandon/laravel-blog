@@ -23,7 +23,10 @@
                 {{Form::submit('Login', array('class' => 'btn btn-primary btn-block html-element-top-margin'))}}
 
                 {!! Form::close() !!}
-            </div>            
+            </div>
+            <div class="panel-heading">
+                {!! Html::linkRoute('password.link.request.form', 'Forgot Password', array(), array()) !!}
+            </div>
 
         </div>
     </div>
