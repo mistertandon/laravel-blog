@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use App\Post;
+use App\Tag;
 
 class PostController extends Controller {
 
@@ -33,10 +34,14 @@ class PostController extends Controller {
      */
     public function create() {
 
-        $categories = array();
+        $data = $tag = $categories = array();
         $categories = DB::table('categories')->pluck('name', 'id');
-
-        return view('posts.create')->withCategories($categories);
+        $tags = DB::table('tags')->pluck('name', 'id');
+        
+        $data['categories'] = $categories;
+        $data['tags'] = $tags;
+                
+        return view('posts.create')->with($data);
     }
 
     /**
@@ -54,11 +59,14 @@ class PostController extends Controller {
             'body' => 'required|max:255'
         ));
 
+        $postTags = implode(',',$request->input('tags'));
+
         $post = new Post;
 
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->category_id = $request->input('category_id');
+        $post->tags = $postTags;
         $post->body = $request->input('body');
 
         /**
@@ -93,13 +101,17 @@ class PostController extends Controller {
      */
     public function edit($id) {
 
-        $post = array();
+        $data = $selectedTags = $categories = $tags = $post = array();
+
         $post = Post::find($id);
 
-        $categories = array();
-        $categories = DB::table('categories')->pluck('name', 'id');
+        $selectedTags = array_flip(explode(',',$post->tags));
 
-        return view('posts.edit')->with('post', $post)->with('categories', $categories);
+        $categories = DB::table('categories')->pluck('name', 'id');
+        $tags = DB::table('tags')->pluck('name', 'id');
+
+        return view('posts.edit')->with('post', $post)->with('categories', $categories)->with('tags', $tags)->with('selectedtags', $selectedTags);
+
     }
 
     /**
@@ -117,12 +129,15 @@ class PostController extends Controller {
             'category_id' => 'required|integer',
             'body' => 'required:max:255'
         ));
-
+        
+        $postTags = implode(',',$request->input('tags'));
+        
         $post = Post::find($id);
 
         $post->title = $request->input('title');
         $post->slug = $request->input('slug');
         $post->category_id = $request->input('category_id');
+        $post->tags = $postTags;
         $post->body = $request->input('body');
 
         $post->save();

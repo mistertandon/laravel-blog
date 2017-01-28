@@ -13,11 +13,25 @@
             {{ Form::label('title', ' Title :') }}
             {{ Form::text('title', null, array('class' => 'form-control')) }}
 
-            {{ Form::label('slug', 'Slug :', array('class' => 'html-element-top-margin'))}}
-            {{ Form::text('slug', null, array('class'=>'form-control'))}}
+            {{ Form::label('slug', 'Slug :', array('class' => 'html-element-top-margin')) }}
+            {{ Form::text('slug', null, array('class'=>'form-control')) }}
 
             {{ Form::label('category_id', 'Select Category :', array('class' => 'html-element-top-margin')) }}
             {{ Form::select('category_id', $categories, $post->category_id, array('class' => 'form-control')) }}
+
+            {{ Form::label('tags', 'Tags :', array('class' => 'html-element-top-margin')) }}
+            <select name="tags[]" multiple = "multiple" class="form-control">
+                @foreach($tags as $tagId => $tagName)
+
+                <?php
+                $selected = "";
+                $selected = array_key_exists($tagId, $selectedtags) ? "selected" : "";
+                ?>
+                <option value="{{ $tagId }}" {{$selected}}>
+                    {{ $tagName }}
+                </option>
+                @endforeach
+            </select>
 
             {{ Form::label('body', ' Body :', array('class' => 'html-element-top-margin')) }}
             {{ Form::textarea('body', null, array('class' => 'form-control')) }}
