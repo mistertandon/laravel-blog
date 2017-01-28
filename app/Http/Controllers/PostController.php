@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use DB;
+
+use App\Events\NewPostCreated;
+use App\Events\PostEdited;
 use App\Post;
 use App\Tag;
 
@@ -74,6 +77,8 @@ class PostController extends Controller {
          * using below syntax.
          */
         $post->save();
+        
+        event(new NewPostCreated($post));
 
         Session::flash('success', "Post with title \"$request->title\" saved successfully.");
 
@@ -141,6 +146,8 @@ class PostController extends Controller {
         $post->body = $request->input('body');
 
         $post->save();
+        
+        event(new PostEdited($post));
 
         Session::flash('success', "Post with \"$post->title\" updated successfully.");
 
