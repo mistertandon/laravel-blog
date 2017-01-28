@@ -21,6 +21,9 @@
                 {{ Form::label('category_id', 'Select Category :', array('class' => 'html-element-top-margin')) }}
                 {{ Form::select('category_id', $categories, null, array('class' => 'form-control')) }}
 
+                {{ Form::label('tags[]', 'Tags :', array('class' => 'html-element-top-margin')) }}
+                {{ Form::select('tags[]', $tags, null, array('class' => 'form-control select2-multiple-tags', 'multiple' => 'multiple')) }}
+
                 {{ Form::label('body', 'Body : ', array('class' => 'html-element-top-margin')) }}
                 {{ Form::textarea('body',  null, array('class'=>'form-control')) }}
 
@@ -31,4 +34,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(".select2-multiple-tags").select2();
+    });
+</script>
 @endsection
