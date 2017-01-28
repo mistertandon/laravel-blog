@@ -44,7 +44,8 @@ Route::get('blog', 'BlogController@index')
  * Static pages route.
  */
 Route::get('aboutus', 'PageController@aboutUs_PCM');
-Route::get('contactus', 'PageController@contactUs_PCM');
+Route::get('contact', 'ContactController@getContactUsForm')->name('pages.contact');
+Route::post('contact', 'ContactController@postContactUsForm')->name('pages.contact');
 Route::get('career', 'PageController@career_PCM');
 Route::get('/', 'PageController@index_PCM')
         ->name('page.welcome');

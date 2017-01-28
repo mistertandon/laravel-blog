@@ -6,7 +6,7 @@
     </head>
     <body>
 
-        @include('layouts.blogs_partials._navbar')
+        @include('layouts.global_partials._logout_navbar')
         <!-- "container" div starts here -->
 
         <div class="container">

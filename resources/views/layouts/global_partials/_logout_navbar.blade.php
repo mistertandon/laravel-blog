@@ -25,20 +25,22 @@
                     <a href="/aboutus">About Us</a>
                 </li>
                 <li class="{{ Request::is("contactus")? "active":"" }}">
-                    {!! Html::linkRoute('pages.contact', 'Contact Us', array()) !!}
+                    {!! Html::linkRoute('pages.contact', 'Contact Us') !!}
                 </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                     @include('layouts.auths_partials._logout_btn')
+                    @include('layouts.auths_partials._validate_login')
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li>{!! Html::linkRoute('posts.index', 'Posts') !!}</li>
-                        <li>{!! Html::linkRoute('categories.index', 'Categories') !!}</li>
-                        <li>{!! Html::linkRoute('tags.index', 'Tags') !!}</li>
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
             </ul>

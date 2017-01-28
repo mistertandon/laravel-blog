@@ -25,7 +25,7 @@
                     <a href="/aboutus">About Us</a>
                 </li>
                 <li class="{{ Request::is("contactus")? "active":"" }}">
-                    <a href="/contactus">Contact Us</a>
+                    {!! Html::linkRoute('pages.contact', 'Contact Us', array()) !!}
                 </li>
             </ul>
 

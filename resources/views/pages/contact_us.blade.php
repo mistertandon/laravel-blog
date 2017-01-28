@@ -8,23 +8,31 @@
 
     <div class="row">
 
-        <div class="col-md-12">
-            <h2>Contact Us</h2>
-            <form>
-                <div class="form-group">
-                    <label for="email" name="emailLabel">Email ID : </label>
-                    <input class="form-control" id="email" name="email" type="text" placehoder="Email Id">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel panel-heading">
+                    Contact Us
                 </div>
-                <div class="form-group">
-                    <label for="email-subject" name="subjectLabel">Subject  : </label>
-                    <input class="form-control" id="email-subject" name="emailSubject" type="text" placehoder="Email Subject">
+                <div class="panel panel-body">
+
+                    {!! Form::open(array('route' => 'pages.contact')) !!}
+                    
+                    {{ method_field('POST') }}
+                    
+                    {{ Form::label('title', 'Title :') }}
+                    {{ Form::text('title', null, array('class' => 'form-control')) }}
+
+                    {{ Form::label('email', 'Your E-mail Address :', array('class' =>'html-element-top-margin')) }}
+                    {{ Form::text('email', null, array('class' => 'form-control')) }}
+
+                    {{ Form::label('body', 'Body :', array('class' =>'html-element-top-margin')) }}
+                    {{ Form::textarea('body', null, array('class' => 'form-control')) }}
+                    
+                    {{ Form::submit('Contact me', array('class' => 'btn btn-primary btn-block html-element-top-margin')) }}
+
+                    {!! Form::close() !!}
                 </div>
-                <div class="form-group">
-                    <label for="email-body" name="bodyLabel">Body  : </label>
-                    <textarea class="form-control" id="email-body" name="emailBody" placehoder="Email body"></textarea>
-                </div>
-                <input class="btn btn-success" type="submit" value="Send Message">
-            </form>
+            </div>
         </div>
 
     </div>
