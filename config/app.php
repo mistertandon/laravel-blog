@@ -154,7 +154,19 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        /**
+         * HTML service provider
+         */
         Collective\Html\HtmlServiceProvider::class,
+        /**
+         * Dingo API service provider
+         */
+        Dingo\Api\Provider\LaravelServiceProvider::class,
+        /**
+         * Entrust Service Provider
+         */
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -201,5 +213,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 ];

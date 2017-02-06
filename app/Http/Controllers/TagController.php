@@ -57,7 +57,7 @@ class TagController extends Controller
         
         Session::flash('success', "Tag '\"$tag->name\"' has been added");
         
-        return redirec()->route('tags.index');
+        return redirect()->route('tags.index');
     }
 
     /**

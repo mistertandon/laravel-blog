@@ -9,7 +9,9 @@
         "laravel/framework": "5.3.*",
         "laravel/homestead": "^4.0",
         "laravelcollective/html": "^5.3.0",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "dingo/api": "1.0.0-beta7@dev",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -17,7 +19,8 @@
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
-        "doctrine/dbal":"*"
+        "doctrine/dbal":"*",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [
