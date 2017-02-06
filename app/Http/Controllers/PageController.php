@@ -18,7 +18,7 @@ class PageController extends Controller {
     }
 
     /**
-     * This function is usedus to display about us page.
+     * This function is used to display about us page.
      */
     public function aboutUs_PCM() {
 

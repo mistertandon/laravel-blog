@@ -1,18 +1,16 @@
 <?php
 
-use Illuminate\Http\Request;
+use Dingo\Api\Routing\Router;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+/** @var Router $api */
+$api = app(Router::class);
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+$api->version('v1', function (Router $api) {
+
+    $api->get('allusers', 'App\Http\Controllers\ManageController@getAllUsers');
+    $api->get('user/{user_id}/role/{role_name}', 'App\Http\Controllers\ManageController@attachUserRole');
+    $api->get('user/{user_id}/roles', 'App\Http\Controllers\ManageController@getUserRoles');
+    
+    $api->post('user/role/permissions/add', 'App\Http\Controllers\ManageController@attachPermissionsToRole');
+    $api->get('user/role/{role_name}/permissions', 'App\Http\Controllers\ManageController@getPermissionsAssociatedWithRole');
+});
