@@ -27,7 +27,21 @@ class PrivateUserController extends Controller {
      */
     public function recognizeUser() {
 
-        return JWTAuth::parseToken()->toUser();
+        try {
+
+            $user = JWTAuth::parseToken()->toUser();
+        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return $this->response->errorUnauthorized('Token has been expired.');
+        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return $this->response->errorUnauthorized('Token is invalid.');
+        } catch (\Tymon\JWTAuth\Exceptions $e) {
+
+            return $this->response->errorUnauthorized('Something went wrong, try after some time.');
+        }
+
+        return $this->response->array($user->toArray());
     }
 
 }
