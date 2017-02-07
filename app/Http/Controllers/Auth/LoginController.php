@@ -77,15 +77,4 @@ use AuthenticatesUsers;
         return User::all();
     }
     
-    /**
-     * This function is used to retrieve users list without authenticating
-     * the request.
-     * 
-     * @return type
-     */
-    public function getUsersListWithAuthentication() {
-
-        return User::all();
-    }    
-
 }
