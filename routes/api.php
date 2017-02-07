@@ -22,4 +22,5 @@ $api->version('v1', ['middleware' => 'api.auth'], function(Router $api) {
 
     $api->get('private/users', 'App\Http\Controllers\PrivateUserController@getUsersList');
     $api->get('private/recognize/user', 'App\Http\Controllers\PrivateUserController@recognizeUser');
+    $api->get('private/refresh/token', 'App\Http\Controllers\PrivateUserController@refreshToken');
 });

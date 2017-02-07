@@ -30,18 +30,29 @@ class PrivateUserController extends Controller {
         try {
 
             $user = JWTAuth::parseToken()->toUser();
-        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-
-            return $this->response->errorUnauthorized('Token has been expired.');
-        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-
-            return $this->response->errorUnauthorized('Token is invalid.');
-        } catch (\Tymon\JWTAuth\Exceptions $e) {
+        } catch (JWTException $e) {
 
             return $this->response->errorUnauthorized('Something went wrong, try after some time.');
         }
 
         return $this->response->array($user->toArray());
+    }
+
+    /**
+     * This function is used to refresh user token.
+     */
+    public function refreshToken() {
+
+        try {
+
+            $currentToken = JWTAuth::getToken();
+            $rereshToken = JWTAuth::refresh($currentToken);
+        } catch (JWTException $e) {
+
+            return $this->response->errorUnauthorized('Something went wrong, try after some time.');
+        }
+
+        return $this->response->array(compact('rereshToken'));
     }
 
 }
