@@ -11,7 +11,8 @@ class ManageController extends Controller {
 
     /**
      * This function is used to get all existing users list. You may access
-     * this function using mtandon API path i.e. 
+     * this function using mtandon API path i.e.
+     * 
      * [ homestead.app/mtandon/allusers ]
      * 
      */
@@ -64,6 +65,7 @@ class ManageController extends Controller {
     public function getPermissionsAssociatedWithRole($roleParam){
         
         $roleObj = Role::where('name', $roleParam)->first();
+
         /**
          * Alternative syntax with Dingo Router Helpers
          * 
