@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\User;
 
 class LoginController extends Controller {
     /*
@@ -35,7 +36,7 @@ use AuthenticatesUsers;
      * @return void
      */
     public function __construct() {
-        $this->middleware('guest', ['except' => 'logout']);
+//        $this->middleware('guest', ['except' => 'logout']);
     }
 
     public function getLoginForm() {
@@ -55,14 +56,36 @@ use AuthenticatesUsers;
 
             if (!$token = JWTAuth::attempt($credentials)) {
 
-                $this->response->error(['error' => 'Either Email-Address or password is in-correct.'], 500);
+                return $this->response->errorUnauthorized();
             }
         } catch (JWTException $ex) {
 
-            $this->response->error(['error' => 'Something went wrong, try after some time.'], 500);
+            return $this->response->errorInternal();
         }
 
         return $this->response->array(compact('token'))->setStatusCode(200);
     }
+
+    /**
+     * This function is used to retrieve users list without authenticating
+     * the request.
+     * 
+     * @return type
+     */
+    public function getUsersListWithoutAuthentication() {
+
+        return User::all();
+    }
+    
+    /**
+     * This function is used to retrieve users list without authenticating
+     * the request.
+     * 
+     * @return type
+     */
+    public function getUsersListWithAuthentication() {
+
+        return User::all();
+    }    
 
 }
